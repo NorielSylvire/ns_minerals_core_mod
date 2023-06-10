@@ -84,9 +84,15 @@ This method makes sure the `minerals` table is formatted correctly, defaults `ni
 This is really the only method you would normally be calling when using this API as intended.
 
 ---
-### nsmc.register_callback(func)
+### nsmc.register_callback(func_table)
 Parameters:
+* func_table: a table containing at least a string `name` and a  function `func`.
+Mandatory table members:
+* name: a string containing the name of the function. This value will be used for debugging.
 * func: a lua function. This function will typically register different types of content for a mineral, automatically.
+Recommended table members:
+* supported_mod: a string with the name of the mod the function adds items for. An example can be found in all the content mods in this modpack, for example `register_default` has `"default"` as its supported mod, while `register_farming` has `"farming"` as its supported mod.
+These are just used for debugging purposes and you can add as many as you want.
 
 This method adds your function to the `nsmc.registered_callbacks` list. All functions stored this way will be executed once per `mineral` in the `minerals` array.
 
@@ -94,6 +100,19 @@ This method adds your function to the `nsmc.registered_callbacks` list. All func
 ### Tables and Data Structures
 
 This API currently supports two data structures;
+
+---
+### function_table Table
+
+This is a table that contains metadata about the function you are registering.
+The only two mandatory key-value pairs (also referred to as "members" in this documentation) are:
+* name: a string containing the name of the function. This value will be used for debugging.
+* func: a lua function. This function will typically register different types of content for a mineral, automatically.
+
+It is also recommended to add a `supported_mod` member that contains the name of the mod the function registers content for. As an example, if a function registers items and nodes for the default mod, the value of its `supported_mod` would be `"default"`.
+
+If you make a mod for this modpack, or want to update/modify the code of an existing mod in this modpack you can add as many members as you want.
+As long as they offer additional information (metadata) about the function, they are allowed. Although keep in mind the information you add should be useful in a debugging scenario, or justified by another use case.
 
 ---
 ### minerals Array
