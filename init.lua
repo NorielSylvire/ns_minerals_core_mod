@@ -53,6 +53,6 @@ function nsmc.register_minerals(modname, minerals)
     end
 end
 
-function nsmc.register_callback(func, func_name)
-    table.insert(nsmc.registered_callbacks, { name = func_name, func = func} )
+function nsmc.register_callback(func_table)
+    table.insert(nsmc.registered_callbacks, func_table)
 end
