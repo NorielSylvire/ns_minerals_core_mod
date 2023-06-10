@@ -52,6 +52,7 @@ This table is called `nsmc` for convenience, but please, do not confuse this tab
 ---
 ## Changelog
 
+* 1.2.1 - Changed the way callbacks are registered to solve a bug that caused them not to be registered, and to make it possible to register additional information about the callback other than just the callback itself, for example the callback name, to make debugging easier.
 * 1.2 - Made the mod into a modpack. Since the code in this mod existed when the modpack was a mod, this mod carries the changelog of when it was a mod and not a modpack. Similarly, despite this version being the first where this is a mod inside a modpack, the version number is 1.2 so that it's clear this is more recent than 1.1.
 * 1.1 - Improved API documentation and corrected spelling mistakes. Added compatibility with farming mod. Added working hoes and scythes. Added the ability to choose the `texture_brightness` while using custom textures for the tools that do not have custom textures. Changed `is_metal` from `crafting.lua` to `mineral.mineral_type == "metal"`. It was a legacy variable name from back in 2020, when this API was part of nsam mod. The incorrect name caused metal type minerals to not register recipes.
 * 1.0 - Initial release: Automatic registration of tools, nodes, ores, craftitems and crafting recipes. Automatic generation of colorized textures for ALL the items from premade grayscale textures shipped with the API.

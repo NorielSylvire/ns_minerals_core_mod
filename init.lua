@@ -36,9 +36,7 @@ nsmc = {
 }
 
 function nsmc.register_minerals(modname, minerals)
-
     for i, mineral in ipairs(minerals) do
-
         mineral = mineral or {}
 
         if not mineral.name then
@@ -50,11 +48,11 @@ function nsmc.register_minerals(modname, minerals)
         mineral.texture_brightness = mineral.texture_brightness or "bright"
 
         for _, callback in ipairs(nsmc.registered_callbacks) do
-            callback(modname, mineral)
+            callback.func(modname, mineral)
         end
     end
 end
 
-function nsmc.register_callback(func)
-    table.insert(nsmc.registered_callbacks, func)
+function nsmc.register_callback(func, func_name)
+    table.insert(nsmc.registered_callbacks, { name = func_name, func = func} )
 end
